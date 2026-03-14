@@ -71,80 +71,62 @@ def _run_pipeline(video_path, athlete_id, sport, job_id, update_progress=None):
         if not job:
             raise ValueError(f"Job {job_id} not found")
 
-        # Stage 1: Pose estimation
+        # Stage 1: Offload to Hugging Face
         job.status = "processing"
-        job.progress = 10
+        job.progress = 20
         db.commit()
         if update_progress:
-            update_progress(10, "Extracting pose data...")
+            update_progress(20, "Offloading to Hugging Face AI Space...")
 
-        pose_data = extract_pose_sequence(video_path)
-
-        # Stage 2: Player tracking
-        job.progress = 40
-        db.commit()
-        if update_progress:
-            update_progress(40, "Tracking players and ball...")
-
-        trajectories = track_players_and_ball(video_path)
-
-        # Stage 3: Metrics computation
-        metrics = compute_all_metrics(pose_data, trajectories)
-
-        # Stage 4: OCR Processing
-        job.progress = 75
-        db.commit()
-        if update_progress:
-            update_progress(75, "Extracting jersey and scoreboard data...")
+        # Cloudinary URL is stored in job.video_path
+        hf_url = os.environ.get("HF_AI_URL", "https://ak47dev-scoutai-ai.hf.space/analyze")
         
-        cap = cv2.VideoCapture(video_path)
-        ret, first_frame = cap.read()
-        cap.release()
-        
-        jersey_num = ""
-        if trajectories and ret:
-            # Try OCR on the first detection for the first player
-            first_tid = next(iter(trajectories))
-            if trajectories[first_tid]:
-                jersey_num = extract_jersey_number(first_frame, trajectories[first_tid][0]["bbox"])
-        
-        scoreboard_txt = extract_scoreboard(first_frame) if ret else ""
+        try:
+            import requests
+            response = requests.post(
+                hf_url, 
+                json={"video_url": job.video_path, "sport": sport},
+                timeout=300 # Wait up to 5 mins for heavy processing
+            )
+            response.raise_for_status()
+            ai_data = response.json()
+            
+            # Extract results from HF
+            metrics = ai_data["metrics"]
+            talent_score = ai_data["talent_score"]
+            grade = ai_data["grade"]
+            breakdown = ai_data["breakdown"]
+            jersey_num = ai_data.get("jersey_number", "")
+            scoreboard_txt = ai_data.get("scoreboard_text", "")
 
-        # Stage 5: ML scoring
-        job.progress = 85
+        except Exception as hf_err:
+            print(f"Hugging Face Error: {str(hf_err)}")
+            # Fallback or fail
+            raise hf_err
+
+        # Stage 2: Save results to PostgreSQL
+        job.progress = 90
         db.commit()
         if update_progress:
-            update_progress(85, "Scoring talent...")
+            update_progress(90, "Finalizing report...")
 
-        talent_result = score_talent(metrics)
-
-        # Stage 6: Save results
         athlete = job.athlete
         athlete_name = athlete.name if athlete else "Athlete"
 
         ai_summary = (
             f"{athlete_name} demonstrates a talent score of "
-            f"{talent_result['talent_score']}/100 ({talent_result['grade']}). "
-            f"Key strengths: speed ({talent_result['breakdown'].get('speed', 0):.0f}/100), "
-            f"technique ({talent_result['breakdown'].get('technique', 0):.0f}/100), "
-            f"athleticism ({talent_result['breakdown'].get('athleticism', 0):.0f}/100). "
+            f"{talent_score}/100 ({grade}). "
+            f"Key strengths: speed ({breakdown.get('speed', 0):.0f}/100), "
+            f"technique ({breakdown.get('technique', 0):.0f}/100), "
+            f"athleticism ({breakdown.get('athleticism', 0):.0f}/100). "
         )
-
-        if talent_result["grade"] == "Elite":
-            ai_summary += "Outstanding performance detected. Recommend advanced competition exposure."
-        elif talent_result["grade"] == "Advanced":
-            ai_summary += "Strong foundation. Recommend focused drills on weaker areas."
-        elif talent_result["grade"] == "Developing":
-            ai_summary += "Promising potential. Recommend structured training regimen."
-        else:
-            ai_summary += "Building fundamentals. Recommend regular practice and coaching."
 
         result = AnalysisResult(
             job_id=job.id,
-            talent_score=talent_result["talent_score"],
-            grade=talent_result["grade"],
+            talent_score=talent_score,
+            grade=grade,
             metrics_json=json.dumps(metrics),
-            breakdown_json=json.dumps(talent_result["breakdown"]),
+            breakdown_json=json.dumps(breakdown),
             ai_summary=ai_summary,
             jersey_number=jersey_num,
             scoreboard_text=scoreboard_txt,
@@ -156,8 +138,8 @@ def _run_pipeline(video_path, athlete_id, sport, job_id, update_progress=None):
 
         return {
             "status": "complete",
-            "talent_score": talent_result["talent_score"],
-            "grade": talent_result["grade"],
+            "talent_score": talent_score,
+            "grade": grade,
         }
 
     except Exception as e:

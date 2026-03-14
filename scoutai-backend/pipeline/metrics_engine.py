@@ -5,7 +5,7 @@ pose sequences and player trajectories.
 """
 
 import numpy as np
-from utils.angle_utils import compute_angle_3pt
+from angle_utils import compute_angle_3pt
 
 
 # ---------------------------------------------------------------------------

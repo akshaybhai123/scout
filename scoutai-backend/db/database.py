@@ -14,11 +14,23 @@ from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 # ---------------------------------------------------------------------------
 # Engine & Session
 # ---------------------------------------------------------------------------
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DB_PATH = os.path.join(BASE_DIR, "scoutai.db")
-DATABASE_URL = f"sqlite:///{DB_PATH}"
+# Use PostgreSQL if DATABASE_URL is provided, otherwise fallback to SQLite
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
+    # Render provides postgres:// but SQLAlchemy requires postgresql://
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
-engine = create_engine(DATABASE_URL, echo=False, connect_args={"check_same_thread": False})
+if not DATABASE_URL:
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    DB_PATH = os.path.join(BASE_DIR, "scoutai.db")
+    DATABASE_URL = f"sqlite:///{DB_PATH}"
+
+# For PostgreSQL, we don't need check_same_thread
+engine_args = {}
+if "sqlite" in DATABASE_URL:
+    engine_args["connect_args"] = {"check_same_thread": False}
+
+engine = create_engine(DATABASE_URL, echo=False, **engine_args)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 Base = declarative_base()

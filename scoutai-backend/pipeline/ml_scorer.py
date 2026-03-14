@@ -7,7 +7,7 @@ import os
 import numpy as np
 import joblib
 
-MODEL_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "ml_models")
+MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ml_models")
 MODEL_PATH = os.path.join(MODEL_DIR, "talent_scorer.pkl")
 
 
