@@ -35,11 +35,10 @@ const Analysis = () => {
   }, [jobId, navigate]);
 
   const stages = [
-    { id: 'ingestion', label: 'Ingesting Video', minProgress: 0 },
-    { id: 'pose', label: 'Pose Estimation (MediaPipe)', minProgress: 10 },
-    { id: 'tracking', label: 'Player & Ball Tracking (YOLOv8)', minProgress: 40 },
-    { id: 'metrics', label: 'Metrics Computation', minProgress: 65 },
-    { id: 'scoring', label: 'ML Talent Scoring', minProgress: 85 }
+    { id: 'ingestion', label: 'Ingesting to Cloud Storage', minProgress: 0 },
+    { id: 'offload', label: 'Offloading to Hugging Face AI', minProgress: 20 },
+    { id: 'ai', label: 'AI Processing (YOLOv8 + Pose)', minProgress: 40 },
+    { id: 'finalizing', label: 'Finalizing Evaluation', minProgress: 90 }
   ];
 
   if (!status) return null;
