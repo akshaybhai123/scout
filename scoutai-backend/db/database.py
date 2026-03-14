@@ -144,5 +144,46 @@ class ChatMessage(Base):
 # ---------------------------------------------------------------------------
 
 def init_db():
-    """Create all tables if they don't exist."""
+    """Create all tables and seed with benchmark data if empty."""
     Base.metadata.create_all(bind=engine)
+    
+    # Check if we need to seed
+    db = SessionLocal()
+    try:
+        if db.query(Athlete).count() == 0:
+            print("[INFO] Seeding database with benchmark athletes...")
+            # 1. Create Benchmark Athletes
+            benchmarks = [
+                {"name": "Elite Pro A", "sport": "Football", "age": 24, "region": "Europe", "score": 92.5, "grade": "Elite"},
+                {"name": "Elite Pro B", "sport": "Basketball", "age": 22, "region": "USA", "score": 89.1, "grade": "Elite"},
+                {"name": "Rising Star", "sport": "Football", "age": 19, "region": "South America", "score": 84.5, "grade": "Advanced"},
+                {"name": "Fast Track", "sport": "Sprint", "age": 21, "region": "Africa", "score": 88.0, "grade": "Elite"},
+            ]
+            
+            for b in benchmarks:
+                athlete = Athlete(name=b["name"], sport=b["sport"], age=b["age"], region=b["region"])
+                db.add(athlete)
+                db.commit()
+                db.refresh(athlete)
+                
+                # Create a completed job for them
+                job = AnalysisJob(athlete_id=athlete.id, sport=b["sport"], status="complete", progress=100)
+                db.add(job)
+                db.commit()
+                db.refresh(job)
+                
+                # Create the result
+                result = AnalysisResult(
+                    job_id=job.id,
+                    talent_score=b["score"],
+                    grade=b["grade"],
+                    ai_summary=f"Benchmark performance for {b['name']}.",
+                    metrics_json=json.dumps({"avg_speed": 28.5, "max_speed": 34.2, "jump_height": 65.0}),
+                    breakdown_json=json.dumps({"speed": 95, "athleticism": 90, "technique": 85})
+                )
+                db.add(result)
+            
+            db.commit()
+            print("[INFO] Seeding complete.")
+    finally:
+        db.close()
