@@ -147,10 +147,11 @@ def init_db():
     """Create all tables and seed with benchmark data if empty."""
     Base.metadata.create_all(bind=engine)
     
-    # Check if we need to seed
+    # Check if we need to seed (look for specific benchmark name)
     db = SessionLocal()
     try:
-        if db.query(Athlete).count() == 0:
+        exists = db.query(Athlete).filter(Athlete.name == "Elite Pro A").first()
+        if not exists:
             print("[INFO] Seeding database with benchmark athletes...")
             # 1. Create Benchmark Athletes
             benchmarks = [

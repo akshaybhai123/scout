@@ -5,12 +5,18 @@ from typing import Optional
 
 # Cloudinary configuration should be loaded from environment variables in production
 # For now, we provide placeholders that the user will need to fill or set as ENV vars.
-cloudinary.config(
-    cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    api_key = os.environ.get('CLOUDINARY_API_KEY'),
-    api_secret = os.environ.get('CLOUDINARY_API_SECRET'),
-    secure = True
-)
+# Cloudinary configuration
+# Prioritize CLOUDINARY_URL if present, otherwise use individual keys
+cloudinary_url = os.environ.get('CLOUDINARY_URL')
+if cloudinary_url:
+    cloudinary.config(cloudinary_url=cloudinary_url)
+else:
+    cloudinary.config(
+        cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME'),
+        api_key = os.environ.get('CLOUDINARY_API_KEY'),
+        api_secret = os.environ.get('CLOUDINARY_API_SECRET'),
+        secure = True
+    )
 
 def upload_to_cloudinary(file_path: str, folder: str = "scoutai") -> Optional[str]:
     """
