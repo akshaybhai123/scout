@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0c;
+  --color-card: #16161a;
+  
+  --color-primary-blue: #00D4FF;
+  --color-primary-green: #00FF88;
+  --color-primary-orange: #FF6B35;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@layer base {
+  body {
+    @apply bg-background text-slate-200 antialiased font-sans selection:bg-primary-blue/30;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-white tracking-tight;
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-md border border-white/5 rounded-2xl shadow-xl transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply border-white/10 shadow-primary-blue/5;
+  }
+
+  .btn-primary {
+    @apply bg-primary-blue text-black font-bold py-3 px-6 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-primary-blue/20 hover:shadow-primary-blue/40;
+  }
+
+  .btn-secondary {
+    @apply bg-white/5 text-white border border-white/10 font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:bg-white/10 active:scale-95;
+  }
+
+  .neon-text-blue {
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+  }
+
+  .neon-text-green {
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+  }
+
+  .input-field {
+    @apply w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-primary-blue/50 focus:ring-1 focus:ring-primary-blue/50 transition-all duration-200;
+  }
+
+  .scout-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-blue to-primary-green;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}

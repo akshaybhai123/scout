@@ -1,0 +1,23 @@
+# Credentials
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+
+# Data & Uploads (now handled by Cloudinary)
+uploads/
+scoutai.db
+
+# Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# OS files
+.DS_Store
+Thumbs.db

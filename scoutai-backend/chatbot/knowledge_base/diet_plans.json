@@ -1,0 +1,86 @@
+{
+  "general": {
+    "pre_training": {
+      "title": "Pre-Training Nutrition",
+      "advice": "Eat a balanced meal 2-3 hours before training with complex carbs, lean protein, and healthy fats. Examples: oatmeal with banana and peanut butter, chicken with brown rice.",
+      "tips": [
+        "Stay hydrated — drink 500ml water 2 hours before",
+        "Avoid heavy or greasy foods within 1 hour of training",
+        "A small snack (banana, energy bar) 30 min before is fine"
+      ]
+    },
+    "post_training": {
+      "title": "Post-Training Recovery",
+      "advice": "Consume protein and carbs within 30-60 minutes after training to maximize recovery. Aim for a 3:1 carb-to-protein ratio.",
+      "tips": [
+        "Protein shake with banana is a quick option",
+        "Chocolate milk is an excellent recovery drink",
+        "Rehydrate with electrolyte-rich drinks after intense sessions"
+      ]
+    },
+    "hydration": {
+      "title": "Hydration Guidelines",
+      "advice": "Drink at least 2-3 liters of water daily. Increase intake during training days. Monitor urine color — pale yellow indicates good hydration.",
+      "tips": [
+        "Drink 200-300ml every 15-20 minutes during exercise",
+        "Add electrolytes for sessions longer than 60 minutes",
+        "Avoid excessive caffeine which can cause dehydration"
+      ]
+    },
+    "muscle_building": {
+      "title": "Muscle Building Diet",
+      "advice": "Consume 1.6-2.2g protein per kg of body weight daily. Eat in a slight caloric surplus (300-500 kcal above maintenance).",
+      "tips": [
+        "Spread protein intake across 4-5 meals",
+        "Include leucine-rich foods: eggs, chicken, dairy, legumes",
+        "Don't skip carbs — they fuel your workouts"
+      ]
+    },
+    "weight_management": {
+      "title": "Weight Management",
+      "advice": "For cutting, aim for a 300-500 calorie deficit. Keep protein high (2g/kg) to preserve muscle mass while losing fat.",
+      "tips": [
+        "Track calories for at least 2 weeks to understand your baseline",
+        "Prioritize whole foods over processed alternatives",
+        "Eat slowly and mindfully to recognize satiety cues"
+      ]
+    }
+  },
+  "sport_specific": {
+    "cricket": {
+      "match_day": "High-carb breakfast (porridge, toast, fruit). Light lunch with lean protein. Snack between sessions: energy bars, bananas, dried fruits.",
+      "training": "Balanced meals with emphasis on sustained energy. Include iron-rich foods for endurance.",
+      "supplements": "Creatine for explosive power, protein powder for recovery, vitamin D for bone health."
+    },
+    "badminton": {
+      "match_day": "Light, easily digestible meals. Focus on quick-release carbs for fast energy. Avoid dairy close to matches.",
+      "training": "Moderate carb intake. Emphasize foods supporting joint health: fatty fish, nuts, turmeric.",
+      "supplements": "Omega-3 for joint health, magnesium for muscle function, BCAAs for recovery."
+    },
+    "basketball": {
+      "match_day": "High-carb meal 3 hours before. Energy gels or sports drinks during halftime. Post-game protein within 30 minutes.",
+      "training": "Focus on lean protein and complex carbs. Include calcium-rich foods for bone density.",
+      "supplements": "Protein powder, creatine monohydrate, electrolyte mixes."
+    },
+    "volleyball": {
+      "match_day": "Moderate carb loading. Stay hydrated. Light protein with each meal. Avoid high-fiber foods on match days.",
+      "training": "Balanced macros with emphasis on shoulder and joint-supporting nutrients.",
+      "supplements": "Collagen for joint health, vitamin C, protein powder."
+    },
+    "football": {
+      "match_day": "Carb-loading the night before. Pre-match meal: pasta, rice, or toast with lean protein 3 hours prior.",
+      "training": "High calorie intake to support intense training. Focus on iron, B-vitamins, and antioxidants.",
+      "supplements": "Creatine, beta-alanine, caffeine (pre-match), electrolytes."
+    },
+    "tennis": {
+      "match_day": "Easily digestible carbs. Frequent small snacks during changeovers: bananas, energy chews. Sip sports drinks.",
+      "training": "Anti-inflammatory foods: berries, leafy greens, fatty fish. Moderate carb, high protein.",
+      "supplements": "Turmeric/curcumin, omega-3, magnesium for cramp prevention."
+    },
+    "athletics": {
+      "match_day": "Sport-specific: sprinters need more protein, distance runners need more carbs. Time meals carefully around events.",
+      "training": "Periodize nutrition with training cycles. Higher carbs on high-volume days, higher protein on recovery days.",
+      "supplements": "Iron (especially for female athletes), vitamin D, beet root juice for endurance."
+    }
+  }
+}

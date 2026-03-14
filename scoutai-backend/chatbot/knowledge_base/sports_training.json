@@ -1,0 +1,268 @@
+{
+  "cricket": {
+    "batting": {
+      "drills": [
+        "Shadow batting — practice strokes without a ball to groove technique",
+        "Throw-down sessions — face rapid throws from 16-18 yards",
+        "Bobble feed drill — react to unpredictable bounce off a bobble surface",
+        "Short ball drill — practice pull and hook shots with tennis balls"
+      ],
+      "tips": [
+        "Keep your head still and eyes level at point of delivery",
+        "Lead with your front elbow for straight drives",
+        "Practice weight transfer — back foot for short, front foot for full length",
+        "Work on leaving deliveries outside off stump"
+      ]
+    },
+    "bowling": {
+      "drills": [
+        "Target bowling — place cones on good length spots and aim consistently",
+        "Run-up rhythm drill — mark your run-up and practice smooth acceleration",
+        "Slower ball variations — practice knuckle ball, back-of-hand, and off-cutter",
+        "Bowling with a scrambled seam to improve wrist position awareness"
+      ],
+      "tips": [
+        "Maintain a high arm action for pace and bounce",
+        "Focus on seam position rather than just speed",
+        "Use the crease — bowl from wide, close, and around the wicket",
+        "Build a stock ball first, then add variations"
+      ]
+    },
+    "fielding": {
+      "drills": [
+        "Catching — high catches, slip catching, close-in reflex catches",
+        "Ground fielding — attack the ball, pick up and throw in one motion",
+        "Relay throws — practice long-distance accuracy from the boundary",
+        "Diving practice — use crash mats to build confidence in diving catches"
+      ],
+      "tips": [
+        "Always be on the balls of your feet, ready to move",
+        "Watch the ball into your hands — soft hands for catches",
+        "Practice throwing from different angles and distances",
+        "Work on your underarm flick for run-out situations"
+      ]
+    },
+    "injury_prevention": [
+      "Warm up thoroughly before bowling — focus on shoulders and lower back",
+      "Strengthen your core to protect your lower back during fast bowling",
+      "Do regular shoulder mobility exercises to prevent rotator cuff injuries",
+      "Wear proper protective gear — pads, gloves, helmet, abdominal guard"
+    ]
+  },
+  "badminton": {
+    "footwork": {
+      "drills": [
+        "Shadow footwork — move to all 6 corners of the court without a shuttle",
+        "Ladder drills — improve foot speed and coordination",
+        "Split step practice — time your split step with opponent's shot",
+        "Multi-shuttle drill — rapid movement to retrieve shuttles placed around court"
+      ],
+      "tips": [
+        "Always return to base position after each shot",
+        "Use a split step before every shot to improve reaction time",
+        "Stay light on your feet — minimize contact time with the floor",
+        "Practice lunging depth to extend your reach without losing balance"
+      ]
+    },
+    "strokes": {
+      "drills": [
+        "Wall rally — practice clears and drives against a wall",
+        "Smash practice — feed high shuttles and focus on contact point",
+        "Net kill drill — practice tight net shots and net kills from the front court",
+        "Cross-court drop shot practice for deception"
+      ],
+      "tips": [
+        "Use a relaxed grip and tighten only at the point of impact",
+        "Pronation is key for powerful smashes — rotate your forearm",
+        "Disguise your shots by using the same preparation for different strokes",
+        "Practice backhand from the rear court — it's a common weakness"
+      ]
+    },
+    "injury_prevention": [
+      "Strengthen wrist and forearm muscles to prevent tennis elbow",
+      "Stretch your calves and Achilles regularly — high injury risk in badminton",
+      "Wear proper court shoes with good lateral support",
+      "Do shoulder strengthening exercises — rotator cuff work is essential"
+    ]
+  },
+  "basketball": {
+    "shooting": {
+      "drills": [
+        "Form shooting — close-range one-handed shooting to perfect mechanics",
+        "Spot-up shooting — shoot from 5 spots around the arc",
+        "Catch-and-shoot — practice receiving a pass and shooting in rhythm",
+        "Free throw routine — shoot 50-100 free throws daily"
+      ],
+      "tips": [
+        "BEEF: Balance, Eyes on target, Elbow aligned, Follow through",
+        "Arc matters — aim for a 45-degree arc on your shot",
+        "Practice your release point — consistent release = consistent shots",
+        "Shoot game-speed shots in practice, not lazy reps"
+      ]
+    },
+    "dribbling": {
+      "drills": [
+        "Stationary dribbling — crossovers, between-the-legs, behind-the-back",
+        "Full-court dribbling — speed dribble with both hands",
+        "Cone dribbling — weave through cones at game speed",
+        "Tennis ball drill — dribble while catching a tennis ball with the other hand"
+      ],
+      "tips": [
+        "Keep your head up — never look at the ball while dribbling",
+        "Pound the ball hard — low dribble is harder to steal",
+        "Develop your weak hand until it's as comfortable as your strong hand",
+        "Use change of pace, not just direction, to beat defenders"
+      ]
+    },
+    "injury_prevention": [
+      "Strengthen ankles with resistance band exercises to prevent sprains",
+      "Wear properly fitted basketball shoes with ankle support",
+      "Land on both feet after jumping to reduce knee stress",
+      "Do ACL prevention exercises — hamstring curls, single-leg squats"
+    ]
+  },
+  "volleyball": {
+    "spiking": {
+      "drills": [
+        "Approach and jump drill — practice the 3-step approach without the ball",
+        "Wall hitting — practice arm swing and contact point against a wall",
+        "Setter-hitter connection — work with a setter on timing and placement",
+        "Cross-court vs line hitting — practice aiming different angles"
+      ],
+      "tips": [
+        "Use a 3-step approach: left-right-left (for right-handers) or right-left-right",
+        "Contact the ball at the highest point of your jump",
+        "Snap your wrist on contact for topspin and power",
+        "Watch the setter's hands — start your approach when the ball is set"
+      ]
+    },
+    "blocking": {
+      "drills": [
+        "Footwork drill — slide step along the net, jump and press",
+        "Read blocking — react to the setter's delivery and move to the hitter",
+        "Solo block repetitions — practice timing your jump to match the hitter",
+        "Double block coordination — practice with a partner"
+      ],
+      "tips": [
+        "Penetrate your hands over the net — seal the block",
+        "Keep your eyes on the hitter's arm, not the ball",
+        "Stay on the balls of your feet for quick lateral movement",
+        "Don't jump too early — time your jump to the hitter's approach"
+      ]
+    },
+    "injury_prevention": [
+      "Strengthen shoulders with internal and external rotation exercises",
+      "Do prehab for patellar tendon — squats, step-ups, eccentric exercises",
+      "Tape or brace fingers if you're a setter or blocker",
+      "Practice safe landing mechanics to prevent ankle injuries"
+    ]
+  },
+  "football": {
+    "speed_training": {
+      "drills": [
+        "Sprint intervals — 10x 30m sprints with 60-second rest",
+        "Acceleration drill — 3-point stance to 10-yard burst",
+        "Agility ladder — fast feet patterns for quickness",
+        "Shuttle runs — 5-10-5 pro agility drill"
+      ],
+      "tips": [
+        "Drive your knees high and pump your arms for maximum speed",
+        "Lean forward during acceleration, upright at top speed",
+        "Work on your first 5 steps — they determine most plays",
+        "Strengthen your hip flexors for faster stride frequency"
+      ]
+    },
+    "skills": {
+      "drills": [
+        "Passing accuracy — hit targets at various distances",
+        "First touch control — receive passes from different angles",
+        "1v1 dribbling — beat a defender in a confined space",
+        "Crossing and finishing — deliver crosses and convert them"
+      ],
+      "tips": [
+        "Keep the ball close when dribbling in tight spaces",
+        "Use both feet — practice your weaker foot daily",
+        "Look up before passing — scan the field",
+        "Practice under pressure — never train at walking pace"
+      ]
+    },
+    "injury_prevention": [
+      "FIFA 11+ warm-up program reduces injuries by up to 50%",
+      "Strengthen hamstrings — Nordic hamstring curls are essential",
+      "Warm up for at least 15 minutes before any match or training",
+      "Wear shin guards — they prevent a surprising number of fractures"
+    ]
+  },
+  "tennis": {
+    "serve": {
+      "drills": [
+        "Ball toss practice — consistent toss height and placement",
+        "Serve from the service line — focus on placement, not power",
+        "Shadow swing — practice the full service motion without a ball",
+        "Target practice — place cones in service box corners"
+      ],
+      "tips": [
+        "A reliable second serve is more important than a booming first serve",
+        "Use continental grip for serves — it enables spin",
+        "Toss the ball slightly in front and to the right (for right-handers)",
+        "Use your legs — power comes from the ground up, not just the arm"
+      ]
+    },
+    "groundstrokes": {
+      "drills": [
+        "Cross-court rally — 50 consecutive cross-court backhands/forehands",
+        "Feed and hit — have a partner feed balls to practice specific shots",
+        "Approach shot to volley — transition from baseline to net",
+        "Movement drill — practice recovery steps between shots"
+      ],
+      "tips": [
+        "Prepare early — turn your shoulders as soon as you read the ball",
+        "Hit through the ball — extend your arm toward the target",
+        "Use topspin for consistency and margin over the net",
+        "Stay balanced through your shots — don't fall away"
+      ]
+    },
+    "injury_prevention": [
+      "Stretch your wrist and forearm before and after playing",
+      "Use the right string tension — too tight increases arm stress",
+      "Strengthen your core to protect your back during serves",
+      "Wear court-specific shoes — running shoes cause ankle injuries on court"
+    ]
+  },
+  "athletics": {
+    "sprinting": {
+      "drills": [
+        "Block starts — practice explosive starts from blocks",
+        "Flying 30m — build up speed then sprint at max effort for 30m",
+        "Resistance sprints — use a sled or parachute for strength",
+        "Plyometric bounds — develop explosive power for acceleration"
+      ],
+      "tips": [
+        "Drive phase (first 30m): low body angle, powerful arm drive",
+        "Upright phase: tall posture, relaxed shoulders, fast turnover",
+        "Practice relaxation — tension slows you down",
+        "Strengthen your glutes — they're the primary sprinting muscle"
+      ]
+    },
+    "endurance": {
+      "drills": [
+        "Tempo runs — sustained effort at 70-80% of max heart rate",
+        "Interval training — 800m repeats with 2-minute rest",
+        "Long runs — weekly long run at conversational pace",
+        "Fartlek — mix speed bursts with easy jogging"
+      ],
+      "tips": [
+        "Build mileage gradually — no more than 10% increase per week",
+        "Easy days should feel genuinely easy — most runners go too fast",
+        "Race pace practice — include some work at your target race pace weekly",
+        "Sleep is your #1 recovery tool — aim for 8+ hours"
+      ]
+    },
+    "injury_prevention": [
+      "Don't skip rest days — overtraining is the #1 cause of injury in athletics",
+      "Strengthen small stabilizer muscles — ankles, hips, glutes",
+      "Replace running shoes every 500-700 km",
+      "Get a gait analysis to ensure your running form isn't causing issues"
+    ]
+  }
+}
