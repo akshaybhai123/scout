@@ -18,3 +18,4 @@ pydantic==2.10.4
 requests==2.32.3
 cloudinary==1.41.0
 python-dotenv==1.0.1
+gunicorn==23.0.0
