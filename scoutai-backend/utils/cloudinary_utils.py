@@ -43,6 +43,8 @@ def upload_to_cloudinary(file_path: str, folder: str = "scoutai") -> Optional[st
 
 def is_cloudinary_configured() -> bool:
     """Check if Cloudinary is configured with valid credentials."""
+    if os.environ.get('CLOUDINARY_URL'):
+        return True
     return all([
         os.environ.get('CLOUDINARY_CLOUD_NAME'),
         os.environ.get('CLOUDINARY_API_KEY'),
