@@ -44,27 +44,14 @@ except ImportError:
 
 def _run_pipeline(video_path, athlete_id, sport, job_id, update_progress=None):
     """
-    Run the full CV analysis pipeline (used by both Celery and sync fallback).
+    Run the analysis pipeline by offloading to Hugging Face.
     """
-    # These imports are duplicated here for standalone execution or if CORE_IMPORTS_AVAILABLE is False
-    # In a production Celery worker, they would ideally be loaded once globally.
-    # However, for robustness and local testing without Celery, they are included here.
-    import cv2
-    from pipeline.pose_estimator import extract_pose_sequence
-    from pipeline.player_tracker import track_players_and_ball
-    from pipeline.metrics_engine import compute_all_metrics
-    from pipeline.ml_scorer import score_talent
     from db.database import SessionLocal, AnalysisJob, AnalysisResult
-    from pipeline.ocr_processor import extract_jersey_number, extract_scoreboard
+    import json
+    import os
+    import requests
 
     print(f"DEBUG: Starting pipeline for job {job_id}, video: {video_path}")
-    if not os.path.exists(video_path):
-        print(f"ERROR: Video file not found at {video_path}")
-        # Try relative path check
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        # video_path is likely absolute, but if it was recorded relative to something else...
-        print(f"DEBUG: Base dir is {base_dir}")
-
     db = SessionLocal()
     try:
         job = db.query(AnalysisJob).filter(AnalysisJob.id == job_id).first()
@@ -81,34 +68,28 @@ def _run_pipeline(video_path, athlete_id, sport, job_id, update_progress=None):
         # Cloudinary URL is stored in job.video_path
         hf_url = os.environ.get("HF_AI_URL", "https://ak47dev-scoutai-ai.hf.space/analyze")
         
-        try:
-            import requests
-            response = requests.post(
-                hf_url, 
-                json={"video_url": job.video_path, "sport": sport},
-                timeout=300 # Wait up to 5 mins for heavy processing
-            )
-            response.raise_for_status()
-            ai_data = response.json()
-            
-            # Extract results from HF
-            metrics = ai_data["metrics"]
-            talent_score = ai_data["talent_score"]
-            grade = ai_data["grade"]
-            breakdown = ai_data["breakdown"]
-            jersey_num = ai_data.get("jersey_number", "")
-            scoreboard_txt = ai_data.get("scoreboard_text", "")
-
-        except Exception as hf_err:
-            print(f"Hugging Face Error: {str(hf_err)}")
-            # Fallback or fail
-            raise hf_err
+        print(f"DEBUG: Calling HF Space at {hf_url} with video {job.video_path}")
+        response = requests.post(
+            hf_url, 
+            json={"video_url": job.video_path, "sport": sport},
+            timeout=300 # Wait up to 5 mins
+        )
+        response.raise_for_status()
+        ai_data = response.json()
+        
+        # Extract results from HF
+        metrics = ai_data["metrics"]
+        talent_score = ai_data["talent_score"]
+        grade = ai_data["grade"]
+        breakdown = ai_data["breakdown"]
+        jersey_num = ai_data.get("jersey_number", "")
+        scoreboard_txt = ai_data.get("scoreboard_text", "")
 
         # Stage 2: Save results to PostgreSQL
-        job.progress = 90
+        job.progress = 95
         db.commit()
         if update_progress:
-            update_progress(90, "Finalizing report...")
+            update_progress(95, "Finalizing report...")
 
         athlete = job.athlete
         athlete_name = athlete.name if athlete else "Athlete"
