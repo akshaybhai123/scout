@@ -35,7 +35,7 @@ const Analysis = () => {
   }, [jobId, navigate]);
 
   const stages = [
-    { id: 'ingestion', label: 'Ingesting to Cloud Storage', minProgress: 0 },
+    { id: 'ingestion', label: 'Ingesting Video', minProgress: 0 },
     { id: 'offload', label: 'Offloading to Hugging Face AI', minProgress: 20 },
     { id: 'ai', label: 'AI Processing (YOLOv8 + Pose)', minProgress: 40 },
     { id: 'finalizing', label: 'Finalizing Evaluation', minProgress: 90 }
