@@ -69,6 +69,30 @@ def _run_pipeline(video_path, athlete_id, sport, job_id, update_progress=None):
         hf_url = os.environ.get("HF_AI_URL", "https://ak47dev-scoutai-ai.hf.space/analyze")
         
         print(f"DEBUG: Calling HF Space at {hf_url} with video {job.video_path}")
+
+        import threading
+        import time
+
+        def simulate_progress():
+            db_sim = SessionLocal()
+            try:
+                # Slowly increment from 21 to 89 over ~120 seconds
+                for p in range(21, 90):
+                    time.sleep(1.7) # 69 * 1.7 = ~117 seconds
+                    sim_job = db_sim.query(AnalysisJob).filter(AnalysisJob.id == job_id).first()
+                    if not sim_job or sim_job.status != "processing" or sim_job.progress >= 90:
+                        break
+                    sim_job.progress = p
+                    db_sim.commit()
+            except Exception:
+                pass
+            finally:
+                db_sim.close()
+
+        sim_thread = threading.Thread(target=simulate_progress)
+        sim_thread.daemon = True
+        sim_thread.start()
+
         response = requests.post(
             hf_url, 
             json={"video_url": job.video_path, "sport": sport},
