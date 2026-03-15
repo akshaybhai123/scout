@@ -22,9 +22,7 @@ const Navbar = () => {
       <nav className="fixed top-0 left-0 right-0 z-[60] bg-background/80 backdrop-blur-lg border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
           <Link to="/" onClick={closeMenu} className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-blue to-primary-green rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform">
-              <span className="text-black font-black text-xl">S</span>
-            </div>
+            <img src="/logo.png" alt="ScoutAI Logo" className="w-10 h-10 object-contain rounded-xl group-hover:rotate-12 transition-transform shadow-lg shadow-primary-blue/20" />
             <span className="text-2xl font-black tracking-tighter text-white">
               SCOUT<span className="text-primary-blue">AI</span>
             </span>
@@ -134,9 +132,7 @@ const Layout = ({ children }) => {
       <footer className="py-12 border-t border-white/5 bg-black/20">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">S</span>
-            </div>
+            <img src="/logo.png" alt="ScoutAI Logo" className="w-8 h-8 object-contain rounded-lg shadow-md shadow-primary-blue/10" />
             <span className="text-lg font-bold text-white tracking-tighter">
               SCOUT<span className="text-primary-blue">AI</span>
             </span>
