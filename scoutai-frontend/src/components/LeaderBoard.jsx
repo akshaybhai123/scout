@@ -116,7 +116,7 @@ const LeaderBoard = ({ limit = 10, sport = '' }) => {
                 <div className="col-span-2 text-right flex justify-end items-center gap-2">
                   <button 
                     onClick={(e) => handleDelete(e, athlete.athlete_id, athlete.name)}
-                    className="opacity-0 group-hover:opacity-100 p-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 hover:bg-red-500 hover:text-white transition-all"
+                    className="p-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 hover:bg-red-500 hover:text-white transition-all"
                     title="Delete Athlete"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
